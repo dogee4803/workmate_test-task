@@ -1,12 +1,9 @@
 """Main script for brand analysis."""
 import argparse
 import sys
-import os
 
-#sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-from file_reader import read_csv_files
-from reports.average_rating_report import AverageRatingReport
+from src.file_reader import read_csv_files
+from src.reports.average_rating_report import AverageRatingReport
 
 def main():
     parser = argparse.ArgumentParser(description='Анализ рейтинга брендов')
