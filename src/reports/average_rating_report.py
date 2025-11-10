@@ -5,6 +5,7 @@ from src.reports.base_report import BaseReport
 
 class AverageRatingReport(BaseReport):
     """Class for generating AverageRatingReport"""
+
     def generate(self, data):
         if not data:
             return {'headers': ['Бренд', 'Средний рейтинг'], 'rows': []}

@@ -4,19 +4,8 @@ import os
 
 
 def read_csv_files(file_paths):
-    """
-    Читает данные из нескольких CSV файлов и возвращает объединенный список.
-    
-    Args:
-        file_paths: Список путей к CSV файлам
-        
-    Returns:
-        List[Dict]: Объединенный список данных из всех файлов
-        
-    Raises:
-        FileNotFoundError: Если файл не существует
-        ValueError: Если файл не содержит необходимые колонки
-    """
+    """Reads data from csv files and retuns List[Dict]."""
+
     all_data = []
 
     for file_path in file_paths:

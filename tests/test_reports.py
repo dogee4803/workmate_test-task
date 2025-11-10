@@ -4,6 +4,7 @@ from src.reports.average_rating_report import AverageRatingReport
 
 def test_average_rating_report_empty_data():
     """Test report with empty data."""
+
     report = AverageRatingReport()
     result = report.generate([])
 
@@ -13,6 +14,7 @@ def test_average_rating_report_empty_data():
 
 def test_average_rating_report_single_brand():
     """Test report with single brand and multiple products."""
+
     test_data = [
         {'name': 'iphone 15 pro', 'brand': 'apple', 'price': '999', 'rating': '4.9'},
         {'name': 'iphone 14', 'brand': 'apple', 'price': '799', 'rating': '4.7'},
@@ -28,6 +30,7 @@ def test_average_rating_report_single_brand():
 
 def test_average_rating_report_multiple_brands():
     """Test report with multiple brands."""
+
     test_data = [
         {'name': 'iphone 15 pro', 'brand': 'apple', 'price': '999', 'rating': '4.9'},
         {'name': 'galaxy s23', 'brand': 'samsung', 'price': '899', 'rating': '4.7'},
@@ -49,6 +52,7 @@ def test_average_rating_report_multiple_brands():
 
 def test_average_rating_report_invalid_ratings():
     """Test report with invalid rating values."""
+
     test_data = [
         {'name': 'iphone 15 pro', 'brand': 'apple', 'price': '999', 'rating': '4.9'},
         {'name': 'invalid product', 'brand': 'apple', 'price': '999', 'rating': 'invalid'},
@@ -68,6 +72,7 @@ def test_average_rating_report_invalid_ratings():
 
 def test_average_rating_report_rating_precision():
     """Test that ratings are properly rounded."""
+
     test_data = [
         {'name': 'product1', 'brand': 'apple', 'price': '999', 'rating': '4.666'},
         {'name': 'product2', 'brand': 'apple', 'price': '899', 'rating': '4.777'},
@@ -87,6 +92,7 @@ def test_average_rating_report_rating_precision():
 
 def test_average_rating_report_missing_rating_field():
     """Test report with missing rating field in some rows."""
+
     test_data = [
         {'name': 'iphone 15 pro', 'brand': 'apple', 'price': '999', 'rating': '4.9'},
         {'name': 'iphone 14', 'brand': 'apple', 'price': '799'},  # missing rating
@@ -105,6 +111,7 @@ def test_average_rating_report_missing_rating_field():
 
 def test_average_rating_report_single_product_per_brand():
     """Test report where each brand has only one product."""
+
     test_data = [
         {'name': 'iphone 15 pro', 'brand': 'apple', 'price': '999', 'rating': '4.9'},
         {'name': 'galaxy s23', 'brand': 'samsung', 'price': '899', 'rating': '4.7'},
@@ -121,6 +128,7 @@ def test_average_rating_report_single_product_per_brand():
 
 def test_average_rating_report_display_empty():
     """Test display method with empty result."""
+
     report = AverageRatingReport()
 
     report.display({'headers': ['Бренд', 'Средний рейтинг'], 'rows': []})
@@ -128,6 +136,7 @@ def test_average_rating_report_display_empty():
 
 def test_average_rating_report_display_normal():
     """Test display method with normal data."""
+
     report = AverageRatingReport()
     result = {
         'headers': ['Бренд', 'Средний рейтинг'],

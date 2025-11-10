@@ -6,6 +6,7 @@ from src.file_reader import read_csv_files
 
 def test_read_csv_files_single_file(tmp_path):
     """Test reading single CSV file."""
+
     test_file = tmp_path / "test.csv"
     with open(test_file, 'w', newline='', encoding='utf-8') as file:
         writer = csv.DictWriter(file, fieldnames=['name', 'brand', 'price', 'rating'])
@@ -24,6 +25,7 @@ def test_read_csv_files_single_file(tmp_path):
 
 def test_read_csv_files_multiple_files(tmp_path):
     """Test reading multiple CSV files."""
+
     file1 = tmp_path / "file1.csv"
     file2 = tmp_path / "file2.csv"
 
@@ -56,12 +58,14 @@ def test_read_csv_files_multiple_files(tmp_path):
 
 def test_read_csv_files_file_not_found():
     """Test handling of non-existent files."""
+
     with pytest.raises(FileNotFoundError):
         read_csv_files(['nonexistent_file.csv'])
 
 
 def test_read_csv_files_invalid_format(tmp_path):
     """Test handling of files with invalid format."""
+
     test_file = tmp_path / "invalid.csv"
     with open(test_file, 'w', newline='', encoding='utf-8') as file:
         writer = csv.DictWriter(file, fieldnames=['product', 'company', 'cost', 'score'])
