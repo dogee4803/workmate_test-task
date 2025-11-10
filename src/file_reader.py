@@ -20,7 +20,6 @@ def read_csv_files(file_paths):
     all_data = []
 
     for file_path in file_paths:
-        file_path = "data/" + file_path
         if not os.path.exists(file_path):
             raise FileNotFoundError(f"Файл не найден: {file_path}")
 
