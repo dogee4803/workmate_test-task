@@ -5,11 +5,11 @@ else
 endif
 
 venv:
-	python -m venv venv
+	python3 -m venv venv
 
 install: venv
 	@echo "Installing dependencies..."
-	$(ACTIVATE) && python -m pip install --upgrade pip && pip install -r requirements.txt
+	$(ACTIVATE) && pip install -r requirements.txt
 
 lint:
 	@echo "Running pylint..."
