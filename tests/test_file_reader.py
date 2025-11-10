@@ -10,15 +10,14 @@ def test_read_csv_files_single_file(tmp_path):
     with open(test_file, 'w', newline='', encoding='utf-8') as file:
         writer = csv.DictWriter(file, fieldnames=['name', 'brand', 'price', 'rating'])
         writer.writeheader()
-        writer.writerow({
-            'name': 'iphone 15 pro',
-            'brand': 'apple',
-            'price': '999',
-            'rating': '4.9'
-        })
+        writer.writerows([
+                    {'name': 'iphone 15 pro', 'brand': 'apple', 'price': '999', 'rating': '4.9'},
+                    {'name': 'Galaxy 11', 'brand': 'samsung', 'price': '599', 'rating': '4.6'},
+                    {'name': 'iphone 13', 'brand': 'apple', 'price': '699', 'rating': '4.5'},
+                ])
 
     result = read_csv_files([test_file])
-    assert len(result) == 1
+    assert len(result) == 3
     assert result[0]['brand'] == 'apple'
     assert result[0]['rating'] == '4.9'
 
