@@ -1,8 +1,14 @@
 """Main script for brand analysis."""
 import argparse
+import sys
+import os
+
+#sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from file_reader import read_csv_files
+from reports.average_rating_report import AverageRatingReport
 
 def main():
-    """Main function."""
     parser = argparse.ArgumentParser(description='Анализ рейтинга брендов')
     parser.add_argument('--files', nargs='+', required=True,
                        help='Пути к CSV файлам с данными')
@@ -15,14 +21,24 @@ def main():
     print(f"Files: {args.files}")
     print(f"Report: {args.report}")
 
-    # Checking existing of files
-    for file_path in args.files:
-        try:
-            with open(file_path, 'r', encoding='utf-8') as file:
-                first_line = file.readline()
-                print(f"Файл {file_path} доступен, первая строка: {first_line.strip()}")
-        except FileNotFoundError:
-            print(f"Файл не найден: {file_path}")
+    try:
+        data = read_csv_files(args.files)
+
+        if args.report == 'average-rating':
+            report = AverageRatingReport()
+            result = report.generate(data)
+            report.display(result)
+        else:
+            print(f"Неизвестный тип отчета: {args.report}")
+            sys.exit(1)
+
+    except FileNotFoundError as e:
+        print(f"Ошибка: Файл не найден - {e}")
+        sys.exit(1)
+    except ValueError as e:
+        print(f"Ошибка: Неверный формат данных - {e}")
+        sys.exit(1)
+
 
 if __name__ == '__main__':
     main()
